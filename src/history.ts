@@ -9,7 +9,10 @@ const toMilliseconds = (time: string): number | null => {
 
   const minutes = match[1] ? parseInt(match[1], 10) : 0;
   const seconds = parseInt(match[2], 10);
-  const milliseconds = parseInt(match[3], 10);
+  const milliseconds =
+    match[3].length === 3
+      ? parseInt(match[3], 10)
+      : parseInt(match[3], 10) * 10;
 
   return minutes * 60000 + seconds * 1000 + milliseconds;
 };
